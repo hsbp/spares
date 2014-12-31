@@ -30,4 +30,28 @@ variable called `local_ip` and can be queries in the following way.
 
 ### Connecting ###
 
-The default port is 42232 (the meaning of life + 232 for RS-232).
+The default port is 42232 (the meaning of life + 232 for RS-232). The first
+byte describes which port to use (USB, USART 1/2) along with the baudrate.
+The available baud rates and bit patterns can be seen below.
+
+	MSB   LSB
+	|       |
+	...0 ....  USB   (/dev/ttyACMx under Linux, Serial in Core Firmware)
+	...1 ....  USART (RX/TX pins, Serial1 in Core Firmware)
+	.... ....
+	.... 0000     300 bps
+	.... 0001     600 bps
+	.... 0010    1200 bps
+	.... 0011    2400 bps
+	.... 0100    4800 bps
+	.... 0101    9600 bps
+	.... 0110   14400 bps
+	.... 0111   19200 bps
+	.... 1000   28800 bps
+	.... 1001   38400 bps
+	.... 1010   57600 bps
+	.... 1011  115200 bps
+
+For example, 9600 bps over USB is 0x05, and since the current versions
+ignore the three most significant bits, ASCII 0x45 (`E`) can be used for
+testing; the same applies to 115200 over USART, with ASCII 0x3b (`;`).
