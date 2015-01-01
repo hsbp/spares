@@ -3,14 +3,13 @@ package org.hsbp.spares.android;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.nio.ByteBuffer;
 
-public class Connect extends Activity
+public class Connect extends SparesActivity
 {
     public final static Integer[] baudRates = {300, 600, 1200, 2400, 4800,
         9600, 14400, 19200, 28800, 38400, 57600, 115200};
@@ -24,15 +23,6 @@ public class Connect extends Activity
 
         initSpinner(R.id.serial_port, SerialPort.values());
         initSpinner(R.id.baud_rate, baudRates);
-    }
-
-    protected <T> void initSpinner(final int id, final T[] items) {
-        final Spinner spinner = (Spinner)findViewById(id);
-        final ArrayAdapter<T> adapter = new ArrayAdapter<T>(this,
-                android.R.layout.simple_spinner_item, items);
-        adapter.setDropDownViewResource(
-                android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
     }
 
     public void connect(final View v) {
