@@ -41,4 +41,3 @@
     android:text="Connect"
     android:onClick="connect" />
 </LinearLayout>
-
