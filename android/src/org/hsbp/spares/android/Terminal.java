@@ -35,7 +35,7 @@ public class Terminal extends SparesActivity
     }
 
     private class ConnectTask extends AsyncTask<InetAddress, Void, Socket> {
-        final byte handshake;
+        private final byte handshake;
 
         public ConnectTask(byte handshake) {
             this.handshake = handshake;
