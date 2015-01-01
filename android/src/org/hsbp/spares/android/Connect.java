@@ -1,6 +1,5 @@
 package org.hsbp.spares.android;
 
-import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
