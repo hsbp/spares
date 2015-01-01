@@ -6,7 +6,7 @@ public enum SerialPort {
     private final int value;
     private final String comment;
 
-    private SerialPort(int value, String comment) {
+    private SerialPort(final int value, final String comment) {
         this.value = value;
         this.comment = comment;
     }
