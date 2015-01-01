@@ -37,7 +37,7 @@ public class Terminal extends SparesActivity
     private class ConnectTask extends AsyncTask<InetAddress, Void, Socket> {
         private final byte handshake;
 
-        public ConnectTask(byte handshake) {
+        public ConnectTask(final byte handshake) {
             this.handshake = handshake;
         }
 
@@ -125,7 +125,7 @@ public class Terminal extends SparesActivity
         }
     }
 
-    private static String hexBytes(final byte[] value, int count) {
+    private static String hexBytes(final byte[] value, final int count) {
         final StringBuilder sb = new StringBuilder(count * 3 + 6);
         sb.append("[HEX]");
         for (int i = 0; i < count; i++) sb.append(String.format(" %02X", value[i]));
