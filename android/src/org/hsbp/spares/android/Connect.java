@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.content.Intent;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.nio.ByteBuffer;
@@ -26,10 +27,9 @@ public class Connect extends SparesActivity
     }
 
     public void connect(final View v) {
-        final byte handshake = computeHandshake();
-        final String host = computeHost();
-        System.err.println("handshake: 0x" + Integer.toString(handshake, 16) +
-                " host: \"" + host + "\""); // TODO connect
+        startActivity(new Intent(this, Terminal.class)
+                .putExtra(Terminal.HOST, computeHost())
+                .putExtra(Terminal.HANDSHAKE, computeHandshake()));
     }
 
     protected String computeHost() {
