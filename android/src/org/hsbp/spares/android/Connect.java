@@ -34,7 +34,7 @@ public class Connect extends SparesActivity
     }
 
     private class TerminalTask extends AsyncTask<String, Void, InetAddress> {
-        protected InetAddress doInBackground(String... names) {
+        protected InetAddress doInBackground(final String... names) {
             try {
                 return computeHost(names[0]);
             } catch (UnknownHostException uhe) {
@@ -42,7 +42,7 @@ public class Connect extends SparesActivity
             }
         }
 
-        protected void onPostExecute(InetAddress result) {
+        protected void onPostExecute(final InetAddress result) {
             if (result == null) {
                 Toast.makeText(Connect.this, "Unknown host", Toast.LENGTH_LONG).show();
             } else {
@@ -53,7 +53,7 @@ public class Connect extends SparesActivity
         }
     }
 
-    protected InetAddress computeHost(String host) throws UnknownHostException {
+    protected InetAddress computeHost(final String host) throws UnknownHostException {
         return host.matches("[0-9a-fA-F]{8}") ? hexToIp(host) : InetAddress.getByName(host);
     }
 
