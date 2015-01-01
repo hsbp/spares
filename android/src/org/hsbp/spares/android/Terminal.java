@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import java.io.UnsupportedEncodingException;
+import java.net.InetAddress;
 import java.util.Arrays; // TODO remove
 
 public class Terminal extends SparesActivity
@@ -22,9 +23,9 @@ public class Terminal extends SparesActivity
         setContentView(R.layout.terminal);
         final Intent intent = getIntent();
 
-        final String host = intent.getStringExtra(HOST);
+        final InetAddress host = (InetAddress)intent.getSerializableExtra(HOST);
         final byte handshake = intent.getByteExtra(HANDSHAKE, (byte)0);
-        setTitle(host);
+        setTitle(host.toString());
 
         initSpinner(R.id.send_mode, SendMode.values());
         // TODO connect

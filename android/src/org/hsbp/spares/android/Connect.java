@@ -1,10 +1,12 @@
 package org.hsbp.spares.android;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 import android.content.Intent;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -27,24 +29,37 @@ public class Connect extends SparesActivity
     }
 
     public void connect(final View v) {
-        startActivity(new Intent(this, Terminal.class)
-                .putExtra(Terminal.HOST, computeHost())
-                .putExtra(Terminal.HANDSHAKE, computeHandshake()));
-    }
-
-    protected String computeHost() {
         final EditText hostField = (EditText)findViewById(R.id.ip_address);
-        final String host = hostField.getText().toString();
-        return host.matches("[0-9a-fA-F]{8}") ? hexToIp(host) : host;
+        new TerminalTask().execute(hostField.getText().toString());
     }
 
-    protected static String hexToIp(final String host) {
-        try {
-            return InetAddress.getByAddress(ByteBuffer.allocate(4).putInt(
-                        (int)Long.parseLong(host, 16)).array()).getHostAddress();
-        } catch (UnknownHostException uhe) {
-            return host;
+    private class TerminalTask extends AsyncTask<String, Void, InetAddress> {
+        protected InetAddress doInBackground(String... names) {
+            try {
+                return computeHost(names[0]);
+            } catch (UnknownHostException uhe) {
+                return null;
+            }
         }
+
+        protected void onPostExecute(InetAddress result) {
+            if (result == null) {
+                Toast.makeText(Connect.this, "Unknown host", Toast.LENGTH_LONG).show();
+            } else {
+                startActivity(new Intent(Connect.this, Terminal.class)
+                        .putExtra(Terminal.HOST, result)
+                        .putExtra(Terminal.HANDSHAKE, computeHandshake()));
+            }
+        }
+    }
+
+    protected InetAddress computeHost(String host) throws UnknownHostException {
+        return host.matches("[0-9a-fA-F]{8}") ? hexToIp(host) : InetAddress.getByName(host);
+    }
+
+    protected static InetAddress hexToIp(final String host) throws UnknownHostException {
+        return InetAddress.getByAddress(ByteBuffer.allocate(4).putInt(
+                    (int)Long.parseLong(host, 16)).array());
     }
 
     protected byte computeHandshake() {
