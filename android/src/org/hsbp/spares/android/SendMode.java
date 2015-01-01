@@ -6,6 +6,7 @@ import java.util.regex.*;
 
 public enum SendMode {
     RAW("text", ""), NEWLINE("text + \\n", "\n"),
+    RETURN("text + \\r", "\r"), RETURN_NEWLINE("text + \\r\\n", "\r\n"),
     HEX("hex", null) {
         @Override
         byte[] transform(final String input) {
