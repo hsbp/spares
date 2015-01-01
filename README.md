@@ -55,3 +55,8 @@ The available baud rates and bit patterns can be seen below.
 For example, 9600 bps over USB is 0x05, and since the current versions
 ignore the three most significant bits, ASCII 0x45 (`E`) can be used for
 testing; the same applies to 115200 over USART, with ASCII 0x3b (`;`).
+
+License
+-------
+
+The whole project is available under MIT license, see `LICENSE.txt`.
