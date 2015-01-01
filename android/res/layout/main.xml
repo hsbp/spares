@@ -4,10 +4,41 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
+<TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="IP address (hex or dotted decimal) or hostname"
+    />
+<EditText
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/ip_address"
+    android:inputType="text"
+    />
+<TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Serial port"
+    />
+<Spinner
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/serial_port"
+    />
 <TextView  
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
-    android:text="Hello World, Connect"
+    android:text="Baud rate"
     />
+<Spinner
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/baud_rate"
+    />
+<Button
+    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:text="Connect"
+    android:onClick="connect" />
 </LinearLayout>
 
