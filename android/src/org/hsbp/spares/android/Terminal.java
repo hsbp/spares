@@ -54,7 +54,7 @@ public class Terminal extends SparesActivity
         @Override
         protected void onPostExecute(final Socket server) {
             if (server == null) {
-                Toast.makeText(Terminal.this, "Couldn't connect", Toast.LENGTH_LONG).show();
+                Toast.makeText(Terminal.this, R.string.couldnt_connect, Toast.LENGTH_LONG).show();
                 finish();
             } else {
                 new ReceiveTask().execute(server);
@@ -100,7 +100,7 @@ public class Terminal extends SparesActivity
         @Override
         protected void onPostExecute(final Throwable result) {
             Toast.makeText(Terminal.this, result != null ? result.getMessage()
-                    : "Remote peer terminated connection", Toast.LENGTH_LONG).show();
+                    : getString(R.string.remote_terminated), Toast.LENGTH_LONG).show();
             finish();
         }
     }

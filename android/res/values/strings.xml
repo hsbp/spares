@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">SpaReS</string>
+    <string name="unknown_host">Unknown host</string>
+    <string name="couldnt_connect">Couldn\'t connect</string>
+    <string name="remote_terminated">Remote peer terminated connection</string>
+    <string name="ip_address_label">IP address (hex or dotted decimal) or hostname</string>
+    <string name="serial_port_label">Serial port</string>
+    <string name="baud_rate_label">Baud rate</string>
+    <string name="connect_button">Connect</string>
+    <string name="send_in_button">Send in</string>
 </resources>

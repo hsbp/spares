@@ -43,7 +43,7 @@ public class Connect extends SparesActivity
 
         protected void onPostExecute(final InetAddress result) {
             if (result == null) {
-                Toast.makeText(Connect.this, "Unknown host", Toast.LENGTH_LONG).show();
+                Toast.makeText(Connect.this, R.string.unknown_host, Toast.LENGTH_LONG).show();
             } else {
                 startActivity(new Intent(Connect.this, Terminal.class)
                         .putExtra(Terminal.HOST, result)

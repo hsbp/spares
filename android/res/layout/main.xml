@@ -7,7 +7,7 @@
 <TextView
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:text="IP address (hex or dotted decimal) or hostname"
+    android:text="@string/ip_address_label"
     />
 <EditText
     android:layout_width="fill_parent"
@@ -18,7 +18,7 @@
 <TextView
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:text="Serial port"
+    android:text="@string/serial_port_label"
     />
 <Spinner
     android:layout_width="fill_parent"
@@ -28,7 +28,7 @@
 <TextView  
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
-    android:text="Baud rate"
+    android:text="@string/baud_rate_label"
     />
 <Spinner
     android:layout_width="fill_parent"
@@ -38,6 +38,6 @@
 <Button
     android:layout_height="wrap_content"
     android:layout_width="fill_parent"
-    android:text="Connect"
+    android:text="@string/connect_button"
     android:onClick="connect" />
 </LinearLayout>

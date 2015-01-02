@@ -12,7 +12,7 @@
         <Button
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="Send in"
+            android:text="@string/send_in_button"
             android:id="@+id/send"
             android:enabled="false"
             android:onClick="send" />
