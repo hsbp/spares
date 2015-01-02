@@ -3,6 +3,13 @@ SpaReS: Spark.io Remote Serial port
 
 Connects the serial ports of the Spark Core board to a TCP channel.
 
+Implementations
+---------------
+
+ - The Spark.io firmware can be found in the `firmware` directory.
+ - An Android app and a Python client for Unix-like systems can be
+   found in the `android` and `python` directory, respectively.
+
 Protocol design
 ---------------
 
