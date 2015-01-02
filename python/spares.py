@@ -47,6 +47,7 @@ def connect(host, handshake):
                         print('Connection closed by remote peer', file=stderr)
                         return
                     stdout.write(r)
+                    stdout.flush()
                 elif ready is stdin:
                     r = stdin.read(1)
                     if not r or chr(3) in r or chr(4) in r:
